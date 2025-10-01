@@ -53,7 +53,7 @@
       }
       .banner::after {
       content: "";
-      background-color: hotpink;
+      background-color: purple;
       position: absolute;
       width: 100%;
       height: 180%;
