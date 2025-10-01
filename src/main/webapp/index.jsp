@@ -8,7 +8,6 @@
       html, body {
       min-height: 90%;
       }
-     <!-- commemt -->
       body, div, form, input, select, p {
       padding: 0;
       margin: 0;
@@ -169,6 +168,48 @@
       button:hover {
       background: #1e6fa0;
       }
+      
+      /* Phone validation styles */
+      .phone-input-container {
+        position: relative;
+      }
+      
+      .phone-input-container input {
+        padding-left: 40px;
+      }
+      
+      .phone-prefix {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        font-weight: 500;
+        z-index: 1;
+      }
+      
+      .validation-message {
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+      }
+      
+      .valid-message {
+        color: #2ecc71;
+      }
+      
+      .invalid-message {
+        color: #e74c3c;
+      }
+      
+      input.valid {
+        border-color: #2ecc71;
+      }
+      
+      input.invalid {
+        border-color: #e74c3c;
+      }
+      
       @media (min-width: 568px) {
       .name-item, .contact-item, .position-item {
       display: flex;
@@ -192,18 +233,18 @@
   </head>
   <body>
     <div class="testbox">
-      <form action="/">
+      <form action="/" id="jobApplicationForm">
         <div class="banner">
           <h1>DevOps Job Application Form</h1>
         </div>
         <div align="left">
- 
         <p class="top-info"><b>Thank you for your interest in working with us. <br/> Please check below for available job opportunities that meet your criteria and send your application by filling out the Job Application Form.</b></p>
         </div>
         
-<div align="left">
-
-  <p> We will get back to you shortly</p></div>
+        <div align="left">
+          <p> We will get back to you shortly</p>
+        </div>
+        
         <div class="item">
           <p>Name<span class="required">*</span></p>
           <div class="name-item">
@@ -211,16 +252,23 @@
             <input type="text" name="name" placeholder="Last" required/>
           </div>
         </div>
+        
         <div class="contact-item">
           <div class="item">
             <p>Email<span class="required">*</span></p>
-            <input type="text" name="name" required/>
+            <input type="text" name="email" required/>
           </div>
           <div class="item">
             <p>Phone<span class="required">*</span></p>
-            <input type="text" name="name" required/>
+            <div class="phone-input-container">
+              <span class="phone-prefix">+1</span>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" maxlength="14" required/>
+              <div class="validation-message valid-message">✓ Valid phone number</div>
+              <div class="validation-message invalid-message">✗ Please enter numbers only</div>
+            </div>
           </div>
         </div>
+        
         <div class="position-item">
           <div class="item">
             <p>What position are you applying for?<span class="required">*</span></p>
@@ -238,6 +286,7 @@
             <i class="fas fa-calendar-alt"></i>
           </div>
         </div>
+        
         <div class="question">
           <p>What is your current employment status?<span class="required">*</span></p>
           <div class="question-answer">
@@ -259,11 +308,13 @@
             </div>
           </div>
         </div>
+        
         <div class="item">
           <p>Submit your resume by providing your resume URL or attach file:</p>
           <input type="text" name="providing"/>
-  <input type="file" name="file" accept="file/*">
+          <input type="file" name="file" accept="file/*">
         </div>
+        
         <div class="question">
           <p>Would you like to list references</p>
           <div class="question-answer">
@@ -277,10 +328,76 @@
             </div>
           </div>
         </div>
+        
         <div class="btn-block">
-          <button type="submit" href="/">Apply For The Job</button>
+          <button type="submit">Apply For The Job</button>
         </div>
       </form>
     </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const phoneInput = document.getElementById('phone');
+        const validMessage = document.querySelector('.valid-message');
+        const invalidMessage = document.querySelector('.invalid-message');
+        const form = document.getElementById('jobApplicationForm');
+        
+        // Format phone number as user types
+        phoneInput.addEventListener('input', function(e) {
+          // Remove all non-digit characters
+          let value = e.target.value.replace(/\D/g, '');
+          
+          // Format the phone number
+          if (value.length > 0) {
+            if (value.length <= 3) {
+              value = '(' + value;
+            } else if (value.length <= 6) {
+              value = '(' + value.substring(0, 3) + ') ' + value.substring(3);
+            } else {
+              value = '(' + value.substring(0, 3) + ') ' + value.substring(3, 6) + '-' + value.substring(6, 10);
+            }
+          }
+          
+          e.target.value = value;
+          
+          // Validate the input
+          validatePhoneNumber(e.target.value);
+        });
+        
+        // Validate on blur
+        phoneInput.addEventListener('blur', function(e) {
+          validatePhoneNumber(e.target.value);
+        });
+        
+        // Validate on form submission
+        form.addEventListener('submit', function(e) {
+          if (!validatePhoneNumber(phoneInput.value)) {
+            e.preventDefault();
+            alert('Please enter a valid phone number with digits only');
+            phoneInput.focus();
+          }
+        });
+        
+        function validatePhoneNumber(value) {
+          // Remove formatting characters to check if we have only digits
+          const digitsOnly = value.replace(/\D/g, '');
+          
+          // Check if we have exactly 10 digits (US phone number)
+          if (digitsOnly.length === 10) {
+            phoneInput.classList.remove('invalid');
+            phoneInput.classList.add('valid');
+            validMessage.style.display = 'block';
+            invalidMessage.style.display = 'none';
+            return true;
+          } else {
+            phoneInput.classList.remove('valid');
+            phoneInput.classList.add('invalid');
+            validMessage.style.display = 'none';
+            invalidMessage.style.display = 'block';
+            return false;
+          }
+        }
+      });
+    </script>
   </body>
 </html>
