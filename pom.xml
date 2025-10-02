@@ -4,8 +4,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
   <artifactId>devops</artifactId>
-  <packaging>war
-  <version>release
+  <packaging>war</packaging>
+  <version>release</versoin>
   <name>devops Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
