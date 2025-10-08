@@ -1,403 +1,440 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps Job Application</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
-      html, body {
-      min-height: 90%;
-      }
-      body, div, form, input, select, p {
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 15px;
-      color: #012;
-      line-height: 40px;
-      }
-      h1 {
-      position: absolute;
-      margin: 0;
-      font-size: 50px;
-      color: #000;
-      z-index: 2;
-      }
-      p.top-info {
-      margin: 10px 0;
-      }
-      .testbox {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: inherit;
-      padding: 20px;
-      }
-      form {
-      width: 200%;
-      padding: 20px;
-      border-radius: 6px;
-      background: #FFF;
-      box-shadow: 0 0 25px 0 #000;
-      }
-     .banner {
-      position: relative;
-      height: 150px;
-      background-image: url("/uploads/media/default/0001/02/fb57ab781c34da322c884532bfec751e843e36fc.jpeg");
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      }
-      .banner::after {
-      content: "";
-      background-color: teal;
-      position: absolute;
-      width: 100%;
-      height: 180%;
-      }
-      input, select, textarea {
-      margin-bottom: 10px;
-      border: 1px solid #EEE;
-      border-radius: 3px;
-      }
-      input {
-      width: calc(100% - 10px);
-      padding: 5px;
-      }
-      input[type="date"] {
-      padding: 4px 5px;
-      }
-      select {
-      width: 100%;
-      padding: 7px 0;
-      background: transparent;
-      }
-      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
-      color: #1c87c9;
-      }
-      .item input:hover, .item select:hover {
-      border: 1px solid transparent;
-      box-shadow: 0 0 6px 0 #1c87c9;
-      color: #1c87c9;
-      }
-      .item {
-      position: relative;
-      margin: 10px 0;
-      }
-      input[type="date"]::-webkit-inner-spin-button {
-      display: none;
-      }
-      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
-      position: absolute;
-      font-size: 40px;
-      color: #a9a9a9;
-      }
-      .item i {
-      right: 2%;
-      top: 30px;
-      z-index: 1;
-      }
-      [type="date"]::-webkit-calendar-picker-indicator {
-      right: 1%;
-      z-index: 2;
-      opacity: 0;
-      cursor: pointer;
-      }
-      input[type=radio]  {
-      display: none;
-      }
-      label.radio {
-      position: relative;
-      display: inline-block;
-      margin: 5px 20px 10px 0;
-      cursor: pointer;
-      }
-      .question span {
-      margin-left: 30px;
-      }
-      span.required {
-      margin-left: 0;
-      color: #FAEBE7;
-      }
-      label.radio:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      border: 2px solid #ccc;
-      }
-      input[type=radio]:checked + label:before, label.radio:hover:before {
-      border: 2px solid #1c87c9;
-      }
-      label.radio:after {
-      content: "";
-      position: absolute;
-      top: 6px;
-      left: 5px;
-      width: 8px;
-      height: 4px;
-      border: 3px solid #1c87c9;
-      border-top: none;
-      border-right: none;
-      transform: rotate(-45deg);
-      opacity: 0;
-      }
-      input[type=radio]:checked + label:after {
-      opacity: 1;
-      }
-      .btn-block {
-      margin-top: 10px;
-      text-align: center;
-      }
-      button {
-      width: auto;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      background: #000;
-      font-size: 20px;
-      font-weight: 900;
-      color: #FAEBE7;
-      cursor: pointer;
-      }
-      button:hover {
-      background: #1e6fa0;
-      }
-      
-      /* Phone validation styles */
-      .phone-input-container {
-        position: relative;
-      }
-      
-      .phone-input-container input {
-        padding-left: 40px;
-      }
-      
-      .phone-prefix {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #666;
-        font-weight: 500;
-        z-index: 1;
-      }
-      
-      .validation-message {
-        font-size: 12px;
-        margin-top: 5px;
-        display: none;
-      }
-      
-      .valid-message {
-        color: #2ecc71;
-      }
-      
-      .invalid-message {
-        color: #e74c3c;
-      }
-      
-      input.valid {
-        border-color: #2ecc71;
-      }
-      
-      input.invalid {
-        border-color: #e74c3c;
-      }
-      
-      @media (min-width: 568px) {
-      .name-item, .contact-item, .position-item {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      }
-      .name-item input {
-      width: calc(50% - 20px);
-      }
-      .contact-item .item, .position-item .item {
-      width: calc(50% - 8px);
-      }
-      .contact-item input, .position-item input {
-      width: calc(100% - 12px);
-      }
-      .position-item select {
-      width: 100%;
-      }
-      }
+        :root {
+            --facebook-blue: #1877f2;
+            --facebook-blue-hover: #166fe5;
+            --facebook-green: #42b72a;
+            --facebook-green-hover: #36a420;
+            --facebook-gray: #f0f2f5;
+            --facebook-dark-gray: #8a8d91;
+            --facebook-border: #dddfe2;
+            --facebook-text: #1c1e21;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            background-color: var(--facebook-gray);
+            color: var(--facebook-text);
+            line-height: 1.34;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            color: var(--facebook-blue);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: var(--facebook-dark-gray);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--facebook-border);
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--facebook-blue);
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        
+        .form-group {
+            flex: 1 0 50%;
+            padding: 0 10px;
+            margin-bottom: 15px;
+            min-width: 250px;
+        }
+        
+        .form-group.full-width {
+            flex: 1 0 100%;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e41e3f;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid var(--facebook-border);
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: var(--facebook-gray);
+            transition: border-color 0.2s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--facebook-blue);
+            outline: none;
+            background-color: white;
+        }
+        
+        .phone-input-container {
+            position: relative;
+        }
+        
+        .phone-prefix {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--facebook-dark-gray);
+            font-weight: 500;
+            z-index: 1;
+        }
+        
+        .phone-input-container input {
+            padding-left: 35px;
+        }
+        
+        .validation-message {
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .valid-message {
+            color: var(--facebook-green);
+        }
+        
+        .invalid-message {
+            color: #e41e3f;
+        }
+        
+        input.valid {
+            border-color: var(--facebook-green);
+        }
+        
+        input.invalid {
+            border-color: #e41e3f;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .file-input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .file-input-container input[type="text"] {
+            flex: 1;
+        }
+        
+        .file-input-container input[type="file"] {
+            flex: 1;
+            padding: 8px;
+        }
+        
+        .submit-btn {
+            background-color: var(--facebook-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 20px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--facebook-blue-hover);
+        }
+        
+        .footer {
+            text-align: center;
+            color: var(--facebook-dark-gray);
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .form-group {
+                flex: 1 0 100%;
+            }
+            
+            .file-input-container {
+                flex-direction: column;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="testbox">
-      <form action="/" id="jobApplicationForm">
-        <div class="banner">
-          <h1>DevOps Job Application Form</h1>
-        </div>
-        <div align="left">
-        <p class="top-info"><b>Thank you for your interest in working with us. <br/> Please check below for available job opportunities that meet your criteria and send your application by filling out the Job Application Form.</b></p>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DevOps Career Opportunities</h1>
+            <p>Join our team of innovative engineers building the future of technology</p>
+            <p>Complete the form below and we'll get back to you shortly</p>
         </div>
         
-        <div align="left">
-          <p> We will get back to you shortly</p>
+        <div class="form-container">
+            <form id="jobApplicationForm">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="required">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="required">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="required">Phone Number</label>
+                            <div class="phone-input-container">
+                                <span class="phone-prefix">+1</span>
+                                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" maxlength="14" required>
+                                <div class="validation-message valid-message">✓ Valid phone number</div>
+                                <div class="validation-message invalid-message">✗ Please enter a valid 10-digit phone number</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Position Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Position Information</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="position" class="required">Desired Position</label>
+                            <select id="position" name="position" required>
+                                <option value="" disabled selected>Select a position</option>
+                                <option value="senior-devops">Senior DevOps Engineer</option>
+                                <option value="cloud-engineer">Cloud Infrastructure Engineer</option>
+                                <option value="site-reliability">Site Reliability Engineer</option>
+                                <option value="devops-manager">DevOps Team Lead</option>
+                                <option value="automation-specialist">Automation Specialist</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate" class="required">Available Start Date</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="required">Current Employment Status</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="employed" name="employmentStatus" value="employed" required>
+                                <label for="employed">Employed</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="self-employed" name="employmentStatus" value="self-employed">
+                                <label for="self-employed">Self-Employed</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="unemployed" name="employmentStatus" value="unemployed">
+                                <label for="unemployed">Unemployed</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="student" name="employmentStatus" value="student">
+                                <label for="student">Student</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resume Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Resume Submission</h2>
+                    <div class="form-group full-width">
+                        <label for="resumeUrl">Resume URL (LinkedIn, GitHub, Portfolio)</label>
+                        <input type="text" id="resumeUrl" name="resumeUrl" placeholder="https://linkedin.com/in/yourprofile">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="resumeFile">Or Upload Resume File</label>
+                        <input type="file" id="resumeFile" name="resumeFile" accept=".pdf,.doc,.docx">
+                    </div>
+                </div>
+                
+                <!-- Additional Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Additional Information</h2>
+                    <div class="form-group full-width">
+                        <label>Would you like to provide references?</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="references-yes" name="references" value="yes">
+                                <label for="references-yes">Yes, I can provide references</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="references-no" name="references" value="no">
+                                <label for="references-no">No, not at this time</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="additionalInfo">Additional Information (Optional)</label>
+                        <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Tell us anything else you'd like us to know about your application..."></textarea>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
         </div>
         
-        <div class="item">
-          <p>Name<span class="required">*</span></p>
-          <div class="name-item">
-            <input type="text" name="name" placeholder="First" required/>
-            <input type="text" name="name" placeholder="Last" required/>
-          </div>
+        <div class="footer">
+            <p>We value your privacy. Your information will only be used for recruitment purposes.</p>
         </div>
-        
-        <div class="contact-item">
-          <div class="item">
-            <p>Email<span class="required">*</span></p>
-            <input type="text" name="email" required/>
-          </div>
-          <div class="item">
-            <p>Phone<span class="required">*</span></p>
-            <div class="phone-input-container">
-              <span class="phone-prefix">+1</span>
-              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" maxlength="14" required/>
-              <div class="validation-message valid-message">✓ Valid phone number</div>
-              <div class="validation-message invalid-message">✗ Please enter numbers only</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="position-item">
-          <div class="item">
-            <p>What position are you applying for?<span class="required">*</span></p>
-            <select required>
-              <option value="1">Job 1</option>
-              <option value="2">Job 2</option>
-              <option value="3">Job 3</option>
-              <option value="4">Job 4</option>
-              <option value="5">Job 5</option>
-            </select>
-          </div>
-          <div class="item">
-            <p>Available start date<span class="required">*</span></p>
-            <input type="date" name="bdate" required/>
-            <i class="fas fa-calendar-alt"></i>
-          </div>
-        </div>
-        
-        <div class="question">
-          <p>What is your current employment status?<span class="required">*</span></p>
-          <div class="question-answer">
-            <div>
-              <input type="radio" value="none" id="radio_1" name="status" required/>
-              <label for="radio_1" class="radio"><span>Employed</span></label>
-            </div>
-            <div>
-              <input type="radio" value="none" id="radio_2" name="status" required/>
-              <label for="radio_2" class="radio"><span>Self-Employed</span></label>
-            </div>
-            <div>
-              <input type="radio" value="none" id="radio_3" name="status" required/>
-              <label for="radio_3" class="radio"><span>Unemployed</span></label>
-            </div>
-            <div>
-              <input type="radio" value="none" id="radio_4" name="status" required/>
-              <label for="radio_4" class="radio"><span>Student</span></label>
-            </div>
-          </div>
-        </div>
-        
-        <div class="item">
-          <p>Submit your resume by providing your resume URL or attach file:</p>
-          <input type="text" name="providing"/>
-          <input type="file" name="file" accept="file/*">
-        </div>
-        
-        <div class="question">
-          <p>Would you like to list references</p>
-          <div class="question-answer">
-            <div>
-              <input type="radio" value="none" id="radio_5" name="references" />
-              <label for="radio_5" class="radio"><span>Yes</span></label>
-            </div>
-            <div>
-              <input type="radio" value="none" id="radio_6" name="references" />
-              <label for="radio_6" class="radio"><span>No</span></label>
-            </div>
-          </div>
-        </div>
-        
-        <div class="btn-block">
-          <button type="submit">Apply For The Job</button>
-        </div>
-      </form>
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const phoneInput = document.getElementById('phone');
-        const validMessage = document.querySelector('.valid-message');
-        const invalidMessage = document.querySelector('.invalid-message');
-        const form = document.getElementById('jobApplicationForm');
-        
-        // Format phone number as user types
-        phoneInput.addEventListener('input', function(e) {
-          // Remove all non-digit characters
-          let value = e.target.value.replace(/\D/g, '');
-          
-          // Format the phone number
-          if (value.length > 0) {
-            if (value.length <= 3) {
-              value = '(' + value;
-            } else if (value.length <= 6) {
-              value = '(' + value.substring(0, 3) + ') ' + value.substring(3);
-            } else {
-              value = '(' + value.substring(0, 3) + ') ' + value.substring(3, 6) + '-' + value.substring(6, 10);
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('phone');
+            const validMessage = document.querySelector('.valid-message');
+            const invalidMessage = document.querySelector('.invalid-message');
+            const form = document.getElementById('jobApplicationForm');
+            
+            // Format phone number as user types
+            phoneInput.addEventListener('input', function(e) {
+                // Remove all non-digit characters
+                let value = e.target.value.replace(/\D/g, '');
+                
+                // Format the phone number
+                if (value.length > 0) {
+                    if (value.length <= 3) {
+                        value = '(' + value;
+                    } else if (value.length <= 6) {
+                        value = '(' + value.substring(0, 3) + ') ' + value.substring(3);
+                    } else {
+                        value = '(' + value.substring(0, 3) + ') ' + value.substring(3, 6) + '-' + value.substring(6, 10);
+                    }
+                }
+                
+                e.target.value = value;
+                
+                // Validate the input
+                validatePhoneNumber(e.target.value);
+            });
+            
+            // Validate on blur
+            phoneInput.addEventListener('blur', function(e) {
+                validatePhoneNumber(e.target.value);
+            });
+            
+            // Validate on form submission
+            form.addEventListener('submit', function(e) {
+                if (!validatePhoneNumber(phoneInput.value)) {
+                    e.preventDefault();
+                    alert('Please enter a valid 10-digit phone number');
+                    phoneInput.focus();
+                } else {
+                    e.preventDefault();
+                    alert('Thank you for your application! We will review it and get back to you soon.');
+                    form.reset();
+                }
+            });
+            
+            function validatePhoneNumber(value) {
+                // Remove formatting characters to check if we have only digits
+                const digitsOnly = value.replace(/\D/g, '');
+                
+                // Check if we have exactly 10 digits (US phone number)
+                if (digitsOnly.length === 10) {
+                    phoneInput.classList.remove('invalid');
+                    phoneInput.classList.add('valid');
+                    validMessage.style.display = 'block';
+                    invalidMessage.style.display = 'none';
+                    return true;
+                } else {
+                    phoneInput.classList.remove('valid');
+                    phoneInput.classList.add('invalid');
+                    validMessage.style.display = 'none';
+                    invalidMessage.style.display = 'block';
+                    return false;
+                }
             }
-          }
-          
-          e.target.value = value;
-          
-          // Validate the input
-          validatePhoneNumber(e.target.value);
         });
-        
-        // Validate on blur
-        phoneInput.addEventListener('blur', function(e) {
-          validatePhoneNumber(e.target.value);
-        });
-        
-        // Validate on form submission
-        form.addEventListener('submit', function(e) {
-          if (!validatePhoneNumber(phoneInput.value)) {
-            e.preventDefault();
-            alert('Please enter a valid phone number with digits only');
-            phoneInput.focus();
-          }
-        });
-        
-        function validatePhoneNumber(value) {
-          // Remove formatting characters to check if we have only digits
-          const digitsOnly = value.replace(/\D/g, '');
-          
-          // Check if we have exactly 10 digits (US phone number)
-          if (digitsOnly.length === 10) {
-            phoneInput.classList.remove('invalid');
-            phoneInput.classList.add('valid');
-            validMessage.style.display = 'block';
-            invalidMessage.style.display = 'none';
-            return true;
-          } else {
-            phoneInput.classList.remove('valid');
-            phoneInput.classList.add('invalid');
-            validMessage.style.display = 'none';
-            invalidMessage.style.display = 'block';
-            return false;
-          }
-        }
-      });
     </script>
-  </body>
+</body>
 </html>
