@@ -239,7 +239,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>DevOps Career Opportunities</h1>
+            <h1>DevOps Careers</h1>
             <p>Join our team of innovative engineers building the future of technology</p>
             <p>Complete the form below and we'll get back to you shortly</p>
         </div>
@@ -364,7 +364,7 @@
         </div>
         
         <div class="footer">
-            <p>We value your privacy. Your information will only be used for recruitment purposes.</p>
+            <h3>We value your privacy. Your information will only be used for recruitment purposes.</h3>
         </div>
     </div>
 
