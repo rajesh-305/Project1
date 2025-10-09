@@ -287,7 +287,9 @@
             <div class="instagram-logo">
                 <div class="logo-circle">D</div>
             </div>
-            <h1>DevOps Job Application</h1>
+<h1>Technilix Academy</h1>            
+<p>Shaping the future of IT Professionals</p>
+<h1>DevOps Job Application</h1>
             <p>Join our team of innovative engineers building the future of technology</p>
             <p>Complete the form below and we'll get back to you shortly</p>
         </div>
