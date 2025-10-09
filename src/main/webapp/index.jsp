@@ -28,7 +28,7 @@
         
         body {
             font-family: 'Roboto', Helvetica, Arial, sans-serif;
-            background-color: var(--instagram-light-gray);
+            background-color: #000;
             color: var(--instagram-text);
             line-height: 1.34;
             padding: 20px;
@@ -287,7 +287,7 @@
             <div class="instagram-logo">
                 <div class="logo-circle">D</div>
             </div>
-            <h1>DevOps Careers</h1>
+            <h1>DevOps Job Application</h1>
             <p>Join our team of innovative engineers building the future of technology</p>
             <p>Complete the form below and we'll get back to you shortly</p>
         </div>
