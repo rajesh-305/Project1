@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
         :root {
-            --facebook-blue: #1877f2;
-            --facebook-blue-hover: #166fe5;
-            --facebook-green: #42b72a;
-            --facebook-green-hover: #36a420;
-            --facebook-gray: #f0f2f5;
-            --facebook-dark-gray: #8a8d91;
-            --facebook-border: #dddfe2;
-            --facebook-text: #1c1e21;
+            --instagram-purple: #833AB4;
+            --instagram-pink: #E1306C;
+            --instagram-orange: #F77737;
+            --instagram-yellow: #FCAF45;
+            --instagram-gradient: linear-gradient(45deg, var(--instagram-purple), var(--instagram-pink), var(--instagram-orange), var(--instagram-yellow));
+            --instagram-light-gray: #fafafa;
+            --instagram-medium-gray: #dbdbdb;
+            --instagram-dark-gray: #8e8e8e;
+            --instagram-text: #262626;
+            --instagram-white: #ffffff;
         }
         
         * {
@@ -26,8 +28,8 @@
         
         body {
             font-family: 'Roboto', Helvetica, Arial, sans-serif;
-            background-color: var(--facebook-gray);
-            color: var(--facebook-text);
+            background-color: var(--instagram-light-gray);
+            color: var(--instagram-text);
             line-height: 1.34;
             padding: 20px;
             display: flex;
@@ -44,34 +46,42 @@
         
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--instagram-white);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
         .header h1 {
-            color: var(--facebook-blue);
-            font-size: 28px;
+            background: var(--instagram-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 10px;
         }
         
         .header p {
-            color: var(--facebook-dark-gray);
+            color: var(--instagram-dark-gray);
             font-size: 16px;
             margin-bottom: 5px;
         }
         
         .form-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-            padding: 20px;
+            background-color: var(--instagram-white);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 25px;
             margin-bottom: 20px;
+            border: 1px solid var(--instagram-medium-gray);
         }
         
         .form-section {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--facebook-border);
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--instagram-medium-gray);
         }
         
         .form-section:last-child {
@@ -82,7 +92,11 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 15px;
-            color: var(--facebook-blue);
+            background: var(--instagram-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
         }
         
         .form-row {
@@ -107,27 +121,29 @@
             margin-bottom: 8px;
             font-weight: 500;
             font-size: 14px;
+            color: var(--instagram-text);
         }
         
         .required::after {
             content: " *";
-            color: #e41e3f;
+            color: var(--instagram-pink);
         }
         
         input, select, textarea {
             width: 100%;
-            padding: 11px;
-            border: 1px solid var(--facebook-border);
-            border-radius: 6px;
+            padding: 12px;
+            border: 1px solid var(--instagram-medium-gray);
+            border-radius: 8px;
             font-size: 15px;
-            background-color: var(--facebook-gray);
-            transition: border-color 0.2s;
+            background-color: var(--instagram-light-gray);
+            transition: all 0.2s;
         }
         
         input:focus, select:focus, textarea:focus {
-            border-color: var(--facebook-blue);
+            border-color: var(--instagram-purple);
             outline: none;
-            background-color: white;
+            background-color: var(--instagram-white);
+            box-shadow: 0 0 0 2px rgba(131, 58, 180, 0.2);
         }
         
         .phone-input-container {
@@ -139,7 +155,7 @@
             left: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--facebook-dark-gray);
+            color: var(--instagram-dark-gray);
             font-weight: 500;
             z-index: 1;
         }
@@ -155,19 +171,19 @@
         }
         
         .valid-message {
-            color: var(--facebook-green);
+            color: var(--instagram-purple);
         }
         
         .invalid-message {
-            color: #e41e3f;
+            color: var(--instagram-pink);
         }
         
         input.valid {
-            border-color: var(--facebook-green);
+            border-color: var(--instagram-purple);
         }
         
         input.invalid {
-            border-color: #e41e3f;
+            border-color: var(--instagram-pink);
         }
         
         .radio-group {
@@ -202,27 +218,52 @@
         }
         
         .submit-btn {
-            background-color: var(--facebook-blue);
+            background: var(--instagram-gradient);
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 18px;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: 600;
-            padding: 12px 20px;
+            padding: 14px 20px;
             width: 100%;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .submit-btn:hover {
-            background-color: var(--facebook-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
         
         .footer {
             text-align: center;
-            color: var(--facebook-dark-gray);
+            color: var(--instagram-dark-gray);
             font-size: 14px;
             margin-top: 20px;
+            padding: 15px;
+            background: var(--instagram-white);
+            border-radius: 8px;
+            border: 1px solid var(--instagram-medium-gray);
+        }
+        
+        .instagram-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--instagram-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
         
         @media (max-width: 600px) {
@@ -233,12 +274,19 @@
             .file-input-container {
                 flex-direction: column;
             }
+            
+            .header h1 {
+                font-size: 26px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <div class="instagram-logo">
+                <div class="logo-circle">D</div>
+            </div>
             <h1>DevOps Careers</h1>
             <p>Join our team of innovative engineers building the future of technology</p>
             <p>Complete the form below and we'll get back to you shortly</p>
